@@ -17,16 +17,16 @@ Click "Use this template" in the upper-right corner of the repository page.
 1. Install dependencies:
 
 ```
-yarn install
+pnpm install
 ```
 
 2. Run the development server:
 
 ```
-yarn dev
+pnpm dev
 ```
 
-You can also use `yarn lint` and `yarn typecheck` to check your source
+You can also use `pnpm lint` and `pnpm typecheck` to check your source
 files with Prettier and TypeScript, respectively.
 
 ## Publishing
