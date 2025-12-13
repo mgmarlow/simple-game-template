@@ -4,12 +4,10 @@ import {
   propsModule,
   eventListenersModule,
   attributesModule,
-  VNode,
 } from "snabbdom";
-import Game from "./game";
 import { view } from "./view";
-
-let vnode: VNode;
+import Store from "./store";
+import { Action } from "./types";
 
 const patch = init([
   propsModule,
@@ -21,12 +19,16 @@ const patch = init([
 window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector<HTMLDivElement>("#app")!;
 
-  const game = new Game(render);
+  const store = new Store();
 
-  function render() {
-    vnode = patch(vnode, view(game));
+  function dispatch(action: Action) {
+    store.update(action);
+    render();
   }
 
-  // Initial render.
-  vnode = patch(container, view(game));
+  let vnode = patch(container, view(dispatch)(store.state));
+
+  function render() {
+    vnode = patch(vnode, view(dispatch)(store.state));
+  }
 });

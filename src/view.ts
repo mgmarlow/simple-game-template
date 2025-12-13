@@ -1,10 +1,11 @@
 import { h } from "snabbdom";
-import Game from "./game";
+import { Dispatch } from "./types";
+import { State } from "./store";
 
-export const view = (game: Game) => {
+export const view = (dispatch: Dispatch) => (state: State) => {
   return h("div", [
-    h("p", `count: ${game.count}`),
-    h("button", { on: { click: () => game.increment() } }, "+"),
-    h("button", { on: { click: () => game.decrement() } }, "-"),
+    h("p", `count: ${state.count}`),
+    h("button", { on: { click: () => dispatch({ type: "inc" }) } }, "+"),
+    h("button", { on: { click: () => dispatch({ type: "dec" }) } }, "-"),
   ]);
 };
