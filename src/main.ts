@@ -26,9 +26,10 @@ window.addEventListener("DOMContentLoaded", () => {
     render();
   }
 
-  let vnode = patch(container, view(dispatch)(store.state));
+  const makeView = view(dispatch);
+  let vnode = patch(container, makeView(store.state));
 
   function render() {
-    vnode = patch(vnode, view(dispatch)(store.state));
+    vnode = patch(vnode, makeView(store.state));
   }
 });

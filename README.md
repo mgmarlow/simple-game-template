@@ -31,5 +31,5 @@ files with Prettier and TypeScript, respectively.
 
 ## Publishing
 
-When it comes time to publish your game, run `yarn build` and upload the
+When it comes time to publish your game, run `pnpm build` and upload the
 contents of the `dist/` folder to your static file host of choice.
